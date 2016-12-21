@@ -1,11 +1,11 @@
 # simple library #
 
-организация хранилища элкниг на Google Drive через соответствующий API
+РѕСЂРіР°РЅРёР·Р°С†РёСЏ С…СЂР°РЅРёР»РёС‰Р° СЌР»РєРЅРёРі РЅР° Google Drive С‡РµСЂРµР· СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ API
 
-config.php: конфигурация
- * $config->OPDS - адрес OPDS
- * $config->Path->OPDS - путь к каталогу OPDS (доступен для записи)
- * $config->Path->Upload - путь к каталогу загрузки *.fb2  (доступен для записи)
+config.php: РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ
+ * $config->OPDS - Р°РґСЂРµСЃ OPDS
+ * $config->Path->OPDS - РїСѓС‚СЊ Рє РєР°С‚Р°Р»РѕРіСѓ OPDS (РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ Р·Р°РїРёСЃРё)
+ * $config->Path->Upload - РїСѓС‚СЊ Рє РєР°С‚Р°Р»РѕРіСѓ Р·Р°РіСЂСѓР·РєРё *.fb2  (РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ Р·Р°РїРёСЃРё)
  * [credentials] (https://console.developers.google.com/apis/credentials):
  * $config->Client->ID - Client ID
  * $config->Client->Secret - Client Secret
@@ -13,22 +13,22 @@ config.php: конфигурация
  * [project] (https://console.developers.google.com/iam-admin/settings/project):
  * $config->Project->ID - Project ID
  * $config->Project->Number - Project number
- * $config->Project->Email - Compute Engine default service account (см. в пункте IAM)
- * $config->Project->Folder - id папки на Google Drive, куда будут загружаться архивы
- * $config->db - доступ к MySQL
+ * $config->Project->Email - Compute Engine default service account (СЃРј. РІ РїСѓРЅРєС‚Рµ IAM)
+ * $config->Project->Folder - id РїР°РїРєРё РЅР° Google Drive, РєСѓРґР° Р±СѓРґСѓС‚ Р·Р°РіСЂСѓР¶Р°С‚СЊСЃСЏ Р°СЂС…РёРІС‹
+ * $config->db - РґРѕСЃС‚СѓРї Рє MySQL
 
-logs: каталог для логов, разрешить запись
+logs: РєР°С‚Р°Р»РѕРі РґР»СЏ Р»РѕРіРѕРІ, СЂР°Р·СЂРµС€РёС‚СЊ Р·Р°РїРёСЃСЊ
 
-upload.php: загрузка *.fb2 файлов на сервер в $config->Path->Upload
+upload.php: Р·Р°РіСЂСѓР·РєР° *.fb2 С„Р°Р№Р»РѕРІ РЅР° СЃРµСЂРІРµСЂ РІ $config->Path->Upload
 
-ajax.php: бэкенд
- * books - выбока списка букв, авторов, книг из БД
- * dbase.gdrive - синхронизация хранилища; удаление из БД записей о файлах, отсутствующих на Google Drive
- * gdrive.dbase - синхронизация хранилища; добавление в БД отсутствующих записей о файлах на Google Drive
- * gdrive.delete - удаление файла с Google Drive и записи из БД
- * gdrive.upload - копирование файлов с сервера на Google Drive
-   * исходный файл архивируется в zip
-   * копируется (если файл существует, то перезаписывается)
-   * добавляется/обновляется запись в БД
-   * удаляются fb2 и zip файлы
- * opds - генерация OPDS
+ajax.php: Р±СЌРєРµРЅРґ
+ * books - РІС‹Р±РѕРєР° СЃРїРёСЃРєР° Р±СѓРєРІ, Р°РІС‚РѕСЂРѕРІ, РєРЅРёРі РёР· Р‘Р”
+ * dbase.gdrive - СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ С…СЂР°РЅРёР»РёС‰Р°; СѓРґР°Р»РµРЅРёРµ РёР· Р‘Р” Р·Р°РїРёСЃРµР№ Рѕ С„Р°Р№Р»Р°С…, РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РёС… РЅР° Google Drive
+ * gdrive.dbase - СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ С…СЂР°РЅРёР»РёС‰Р°; РґРѕР±Р°РІР»РµРЅРёРµ РІ Р‘Р” РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РёС… Р·Р°РїРёСЃРµР№ Рѕ С„Р°Р№Р»Р°С… РЅР° Google Drive
+ * gdrive.delete - СѓРґР°Р»РµРЅРёРµ С„Р°Р№Р»Р° СЃ Google Drive Рё Р·Р°РїРёСЃРё РёР· Р‘Р”
+ * gdrive.upload - РєРѕРїРёСЂРѕРІР°РЅРёРµ С„Р°Р№Р»РѕРІ СЃ СЃРµСЂРІРµСЂР° РЅР° Google Drive
+   * РёСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р» Р°СЂС…РёРІРёСЂСѓРµС‚СЃСЏ РІ zip
+   * РєРѕРїРёСЂСѓРµС‚СЃСЏ (РµСЃР»Рё С„Р°Р№Р» СЃСѓС‰РµСЃС‚РІСѓРµС‚, С‚Рѕ РїРµСЂРµР·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ)
+   * РґРѕР±Р°РІР»СЏРµС‚СЃСЏ/РѕР±РЅРѕРІР»СЏРµС‚СЃСЏ Р·Р°РїРёСЃСЊ РІ Р‘Р”
+   * СѓРґР°Р»СЏСЋС‚СЃСЏ fb2 Рё zip С„Р°Р№Р»С‹
+ * opds - РіРµРЅРµСЂР°С†РёСЏ OPDS
