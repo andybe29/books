@@ -1,0 +1,4 @@
+DirectoryIndex opds.php?name=index.xml
+
+RewriteEngine on
+RewriteRule ^(.*).xml?$ opds.php?name=$1.xml [L,QSA]
